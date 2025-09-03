@@ -1,5 +1,3 @@
-# rails-8-template
+# Chirp
 
-For your AppDev Projects!
-
-Some rights reserved — see [LICENSE.txt](LICENSE.txt)
+A Twitter-style microblogging app where users post short messages ("chirps"), follow others, and build personalized timelines.
