@@ -1,0 +1,7 @@
+<h1>Hello, world</h1>
+
+<% if Current.user %>
+  <p>You are signed in as <%= Current.user.email_address %>
+<% else %>
+  <p>You are not signed in</p>
+<% end %>
