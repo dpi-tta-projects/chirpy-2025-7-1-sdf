@@ -1,0 +1,12 @@
+<% content_for :title, "Editing chirp" %>
+
+<h1>Editing chirp</h1>
+
+<%= render "form", chirp: @chirp %>
+
+<br>
+
+<div>
+  <%= link_to "Show this chirp", @chirp %> |
+  <%= link_to "Back to chirps", chirps_path %>
+</div>
