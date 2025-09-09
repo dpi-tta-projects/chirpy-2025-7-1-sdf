@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Chirps" %>
+
+<h1>Chirps</h1>
+
+<div id="chirps">
+  <% @chirps.each do |chirp| %>
+    <%= render chirp %>
+    <p>
+      <%= link_to "Show this chirp", chirp %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New chirp", new_chirp_path %>
