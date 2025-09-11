@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "pages#root"
+  root "chirps#index"
   resources :chirps
   get("/", { :controller => "pages", :action => "root" })
   resource :session

@@ -11,22 +11,12 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id %>
+  <div class="mb-2">
+    <%= form.label(:body, class: "form-label visually-hidden") %>
+    <%= form.textarea(:body, class: "form-control", placeholder: "What is happening?!") %>
   </div>
 
-  <div>
-    <%= form.label :body, style: "display: block" %>
-    <%= form.textarea :body %>
-  </div>
-
-  <div>
-    <%= form.label :deleted_at, style: "display: block" %>
-    <%= form.datetime_field :deleted_at %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+  <div class="d-flex justify-content-end">
+    <%= form.submit(class: "btn btn-primary rounded-pill") %>
   </div>
 <% end %>
