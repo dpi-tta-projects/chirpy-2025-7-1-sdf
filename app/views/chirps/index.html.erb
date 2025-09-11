@@ -9,7 +9,7 @@
     <%= render("form", chirp: Chirp.new) %>
   </div>
 
-  <div id="chirps">
+  <div id="chirps" class="border p-3">
     <% @chirps.each do |chirp| %>
       <%= render("card", chirp: chirp) %>
     <% end %>
