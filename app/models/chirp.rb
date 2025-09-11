@@ -19,6 +19,4 @@
 #
 class Chirp < ApplicationRecord
   belongs_to :user
-  # TODO: verify this is possible
-  # attribute :user, default: { Current.user }
 end
