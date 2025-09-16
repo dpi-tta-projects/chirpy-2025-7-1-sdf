@@ -1,3 +1,11 @@
 class PagesController < ApplicationController
-  def root; end
+  allow_unauthenticated_access(only: :landing)
+
+  def landing
+    if authenticated?
+      redirect_to :chirps
+    else
+      render :landing
+    end
+  end
 end

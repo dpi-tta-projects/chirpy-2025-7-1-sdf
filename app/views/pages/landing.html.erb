@@ -5,4 +5,5 @@
   <%= button_to "Sign Out", session_path, method: :delete, data: { turbo_method: :delete } %>
 <% else %>
   <p>You are not signed in</p>
+  <%= link_to "Sign In", new_session_path %>
 <% end %>
