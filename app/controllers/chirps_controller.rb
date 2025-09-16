@@ -22,6 +22,7 @@ class ChirpsController < ApplicationController
   # POST /chirps or /chirps.json
   def create
     @chirp = Chirp.new(chirp_params)
+    @chirp.user = Current.user
 
     respond_to do |format|
       if @chirp.save
@@ -65,6 +66,6 @@ class ChirpsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def chirp_params
-      params.expect(chirp: [ :user_id, :body, :deleted_at ])
+      params.expect(chirp: [ :body, :deleted_at ])
     end
 end

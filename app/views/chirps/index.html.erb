@@ -1,16 +1,18 @@
-<p style="color: green"><%= notice %></p>
+<div class="container">
+  <p style="color: green"><%= notice %></p>
 
-<% content_for :title, "Chirps" %>
+  <% content_for :title, "Chirps" %>
 
-<h1>Chirps</h1>
+  <h1 class="visually-hidden">Chirps</h1>
 
-<div id="chirps">
-  <% @chirps.each do |chirp| %>
-    <%= render chirp %>
-    <p>
-      <%= link_to "Show this chirp", chirp %>
-    </p>
-  <% end %>
+  <div class="border p-3">
+    <%= render("form", chirp: Chirp.new) %>
+  </div>
+
+  <div id="chirps" class="border p-3">
+    <% @chirps.each do |chirp| %>
+      <%= render("card", chirp: chirp) %>
+    <% end %>
+  </div>
+
 </div>
-
-<%= link_to "New chirp", new_chirp_path %>
