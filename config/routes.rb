@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  root "chirps#index"
+  root "pages#landing"
+
   resources :chirps
-  get("/", { :controller => "pages", :action => "root" })
   resource :session
   resources :passwords, param: :token
 end
