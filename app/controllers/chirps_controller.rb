@@ -3,7 +3,7 @@ class ChirpsController < ApplicationController
 
   # GET /chirps or /chirps.json
   def index
-    @chirps = Chirp.all
+    @chirps = Chirp.all.includes(:user)
   end
 
   # GET /chirps/1 or /chirps/1.json
