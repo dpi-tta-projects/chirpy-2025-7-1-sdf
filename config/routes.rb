@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   resources :chirps
   resource :session
   resources :passwords, param: :token
+  resources :users
 end
