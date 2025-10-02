@@ -20,6 +20,12 @@ unless Rails.env.production?
       names.each do |name|
         user = User.find_or_create_by(email_address: "#{name}@example.com") do |u|
           puts "-- Adding user: #{u.email_address} --"
+          # TODO: handle downcase w/ normalization
+          u.username = name
+          u.bio = Faker::TvShows::Spongebob.quote
+          u.location = Faker::Nation.capital_city
+          u.display_name = name.capitalize
+
           u.password = "password"
         end
       end

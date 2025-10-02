@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <%# TODO: replace with username %>
-  <% content_for :title, @user.email_address %>
+  <% content_for :title, "#{@user.display_name} (@#{@user.username}) / Chirpy" %>
 
 
   <div class="row">
@@ -11,8 +11,7 @@
       <%# TODO: maybe put this in a partial users/_card.html.erb %>
       <div class="card">
         <div class="card-header">
-          <%# TODO: replace with username %>
-          <h1><%= @user.email_address %></h1>
+          <h1><%= @user.display_name %></h1>
           <%# TODO: add chirp count %>
           <p>0 Chirps</p>
         </div>
@@ -20,11 +19,27 @@
 
         <div class="card-body">
           <div class="d-flex justify-content-between align-items-center">
-            <h5 class="card-title"><%= @user.email_address %></h5>
+            <div>
+              <h2><%= @user.display_name %></h2>
+              <h3 class="text-secondary">@<%= @user.username %></h3>
+            </div>
+            
 
             <%= link_to 'Edit Profile', edit_user_path(Current.user.id), class: "btn btn-outline-primary rounded-pill" %>
           </div>
-          <p class="card-text">Joined <%= @user.created_at.strftime("%B %Y") %></p>
+          <p class="card-text">
+            <%= @user.bio %>
+          </p>
+          <p class="card-text">
+            <% if @user.location.present? %>
+              <span class="me-2"><i class="fa-solid fa-map-pin"></i> <%= @user.location %></span>
+            <% end %>
+            <span class="me-2"><i class="fa-solid fa-calendar-days"></i> Joined <%= @user.created_at.strftime("%B %Y") %></span>
+          </p>
+          <div class="d-flex">
+            <a class="me-2 text-dark" href="/">0 Following</a>
+            <a class="me-2 text-dark" href="/">0 Followers</a>
+          </div>
         </div>
       </div>
     </div>

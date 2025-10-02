@@ -20,8 +20,21 @@ class UsersController < ApplicationController
     end
   end
 
-  def update; end
+  def update
+    @user = User.where({ :id => params.fetch(:id) }).at(0)
+    if @user.update(user_params)
+      redirect_to(user_path(@user), notice: "Updated user profile")
+    else
+      render :edit, alert: "Something went wrong when saving"
+    end
+  end
 
   # TODO
   def destroy; end
+
+  private
+
+  def user_params
+    params.expect(user: [ :username, :bio, :display_name, :location ])
+  end
 end

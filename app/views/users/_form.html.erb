@@ -1,1 +1,30 @@
-<%# TODO: setup user edit form %>
+<%= form_with model: user do |form| %>
+
+  <% if user.errors.any? %>
+    <% user.errors.each do |error| %>
+      <p class="text-danger"><%= error.full_message %></p>
+    <% end %>
+  <% end %>
+
+  <%# TODO: handle email + password %>
+
+  <%# TODO: Add bootstrap styling %>
+
+  <div>
+    <%= form.label :username %>
+    <%= form.text_field :username %>
+  </div>
+  <div>
+    <%= form.label :display_name %>
+    <%= form.text_field :display_name %>
+  </div>
+  <div>
+    <%= form.label :bio %>
+    <%= form.text_field :bio %>
+  </div>
+  <div>
+    <%= form.label :location %>
+    <%= form.text_field :location %>
+  </div>
+  <%= form.submit %>
+<% end %>
