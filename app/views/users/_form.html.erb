@@ -8,23 +8,24 @@
 
   <%# TODO: handle email + password %>
 
-  <%# TODO: Add bootstrap styling %>
+  <div class="mb-2">
+    <%= form.label :username, class: "form-label" %>
+    <%= form.text_field :username, class: "form-control" %>
+  </div>
+  <div class="mb-2">
+    <%= form.label :display_name, class: "form-label" %>
+    <%= form.text_field :display_name, class: "form-control" %>
+  </div>
+  <div class="mb-2">
+    <%= form.label :bio, class: "form-label" %>
+    <%= form.textarea :bio, class: "form-control" %>
+  </div>
+  <div class="mb-2">
+    <%= form.label :location, class: "form-label" %>
+    <%= form.text_field :location, class: "form-control" %>
+  </div>
 
-  <div>
-    <%= form.label :username %>
-    <%= form.text_field :username %>
+  <div class="d-flex justify-content-end">
+    <%= form.submit class: "btn btn-primary rounded-pill" %>
   </div>
-  <div>
-    <%= form.label :display_name %>
-    <%= form.text_field :display_name %>
-  </div>
-  <div>
-    <%= form.label :bio %>
-    <%= form.text_field :bio %>
-  </div>
-  <div>
-    <%= form.label :location %>
-    <%= form.text_field :location %>
-  </div>
-  <%= form.submit %>
 <% end %>
