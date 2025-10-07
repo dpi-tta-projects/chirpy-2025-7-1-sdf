@@ -6,23 +6,24 @@
     <% end %>
   <% end %>
 
-  <%# TODO: handle email + password %>
+  <div class="mb-2">
+    <%= form.label :email_address, class: "form-label" %>
+    <%= form.email_field :email_address, class: "form-control" %>
+  </div>
 
   <div class="mb-2">
     <%= form.label :username, class: "form-label" %>
     <%= form.text_field :username, class: "form-control" %>
   </div>
+
   <div class="mb-2">
-    <%= form.label :display_name, class: "form-label" %>
-    <%= form.text_field :display_name, class: "form-control" %>
+    <%= form.label :password, class: "form-label" %>
+    <%= form.password_field :password, class: "form-control" %>
   </div>
+
   <div class="mb-2">
-    <%= form.label :bio, class: "form-label" %>
-    <%= form.textarea :bio, class: "form-control" %>
-  </div>
-  <div class="mb-2">
-    <%= form.label :location, class: "form-label" %>
-    <%= form.text_field :location, class: "form-control" %>
+    <%= form.label :password_confirmation, class: "form-label" %>
+    <%= form.password_field :password_confirmation, class: "form-control" %>
   </div>
 
   <div class="d-flex justify-content-end">
