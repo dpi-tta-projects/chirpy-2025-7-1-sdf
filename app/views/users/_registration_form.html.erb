@@ -1,0 +1,32 @@
+<%= form_with model: user do |form| %>
+
+  <% if user.errors.any? %>
+    <% user.errors.each do |error| %>
+      <p class="text-danger"><%= error.full_message %></p>
+    <% end %>
+  <% end %>
+
+  <div class="mb-2">
+    <%= form.label :email_address, class: "form-label" %>
+    <%= form.email_field :email_address, class: "form-control" %>
+  </div>
+
+  <div class="mb-2">
+    <%= form.label :username, class: "form-label" %>
+    <%= form.text_field :username, class: "form-control" %>
+  </div>
+
+  <div class="mb-2">
+    <%= form.label :password, class: "form-label" %>
+    <%= form.password_field :password, class: "form-control" %>
+  </div>
+
+  <div class="mb-2">
+    <%= form.label :password_confirmation, class: "form-label" %>
+    <%= form.password_field :password_confirmation, class: "form-control" %>
+  </div>
+
+  <div class="d-flex justify-content-end">
+    <%= form.submit class: "btn btn-primary rounded-pill" %>
+  </div>
+<% end %>

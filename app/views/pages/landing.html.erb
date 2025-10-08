@@ -1,9 +1,25 @@
-<h1>Hello, world</h1>
+<div class="container my-5">
+  <div class="row">
 
-<% if Current.user %>
-  <p>You are signed in as <%= Current.user.email_address %>
-  <%= button_to "Sign Out", session_path, method: :delete, data: { turbo_method: :delete } %>
-<% else %>
-  <p>You are not signed in</p>
-  <%= link_to "Sign In", new_session_path %>
-<% end %>
+    <div class="col-6 d-none d-lg-block text-center">
+      <i class="fa-solid fa-kiwi-bird fa-10x my-5 "></i>
+    </div>
+
+    <div class="col-12 d-block d-lg-none">
+      <i class="fa-solid fa-kiwi-bird fa-3x my-5"></i>
+    </div>
+
+    <div class="col-12 col-lg-6">
+      <h1>Birds of a feather flock together</h1>
+
+      <div class="my-3">
+        <h2 class="mt-5">Join today.</h2>
+        <%= link_to "Create account", new_user_path, class: "btn btn-primary rounded-pill w-100" %>
+      </div>
+      <div class="my-3">
+        <p>Already have an account?</p>
+        <%= link_to "Sign In", new_session_path, class: "btn btn-outline-primary rounded-pill w-100" %>
+      </div>
+    </div>
+  </div>
+</div>

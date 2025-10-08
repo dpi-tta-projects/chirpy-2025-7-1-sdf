@@ -5,7 +5,11 @@
     </div>
     <div class="col-md-8">
       <div class="card-body">
-        <h5 class="card-title"><%= chirp.user.email_address %></h5>
+        <h5 class="card-title">
+          <a href="/users/<%= chirp.user.id %>">
+            <%= chirp.user.email_address %>
+          </a>
+        </h5>
         <p class="card-text"><%= chirp.body %></p>
         <p class="card-text">
           <small class="text-body-secondary">

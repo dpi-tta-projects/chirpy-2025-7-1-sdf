@@ -1,0 +1,50 @@
+<div class="container-fluid">
+  <%# TODO: replace with username %>
+  <% content_for :title, "#{@user.display_name} (@#{@user.username}) / Chirpy" %>
+
+
+  <div class="row">
+    <div class="col-2 col-lg-1 p-0">
+      <%= render "shared/sidebar" %>
+    </div>
+    <div class="col-10 col-lg-9 p-0">
+      <%# TODO: maybe put this in a partial users/_card.html.erb %>
+      <div class="card">
+        <div class="card-header">
+          <h1><%= @user.display_name %></h1>
+          <%# TODO: add chirp count %>
+          <p>0 Chirps</p>
+        </div>
+        <img src="https://picsum.photos/seed/<%= @user.email_address %>/1200/400" class="img-fluid" alt="banner image">
+
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <h2><%= @user.display_name %></h2>
+              <h3 class="text-secondary">@<%= @user.username %></h3>
+            </div>
+            
+
+            <%= link_to 'Edit Profile', edit_user_path(Current.user.id), class: "btn btn-outline-primary rounded-pill" %>
+          </div>
+          <p class="card-text">
+            <%= @user.bio %>
+          </p>
+          <p class="card-text">
+            <% if @user.location.present? %>
+              <span class="me-2"><i class="fa-solid fa-map-pin"></i> <%= @user.location %></span>
+            <% end %>
+            <span class="me-2"><i class="fa-solid fa-calendar-days"></i> Joined <%= @user.created_at.strftime("%B %Y") %></span>
+          </p>
+          <div class="d-flex">
+            <a class="me-2 text-dark" href="/">0 Following</a>
+            <a class="me-2 text-dark" href="/">0 Followers</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 p-0">
+      <%# TODO: right sidebar%>
+    </div>
+  </div>
+</div>
