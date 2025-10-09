@@ -1,0 +1,31 @@
+<%= link_to chirp_path(chirp), id: dom_id(chirp), class: "list-group-item list-group-item-action py-3 px-4" do %>
+  <div class="d-flex">
+    <img src="https://picsum.photos/seed/<%= chirp.user.username %>/64/64"
+          alt="avatar"
+          class="rounded-circle me-3 flex-shrink-0"
+          width="48" height="48">
+
+    <div class="flex-grow-1 d-flex flex-column">
+
+      <div class="d-flex align-items-center mb-1">
+        <strong class="me-1"><%= chirp.user.display_name %></strong>
+        <span class="text-muted me-1">@<%= chirp.user.username %></span>
+        <span class="text-muted">· <%= time_ago_in_words(chirp.created_at) %> ago</span>
+      </div>
+
+      <p class="mb-2"><%= chirp.body %></p>
+
+      <%# TODO: hook up links %>
+      <div class="d-flex justify-content-between text-muted small mt-auto pt-2">
+        <div>
+          <i class="fa-solid fa-comment me-3"></i>
+          <i class="fa-solid fa-arrows-rotate me-3"></i>
+          <i class="fa-solid fa-heart"></i>
+        </div>
+        <div>
+          <i class="fa-solid fa-arrow-up-from-bracket"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

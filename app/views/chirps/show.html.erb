@@ -1,12 +1,67 @@
-<%= render @chirp %>
+<div class="container-fluid">
+  <% content_for :title, @chirp.title %>
 
-<%# TODO: form (reply) %>
-<%= render "form", chirp: Chirp.new({ :in_reply_to_chirp_id => @chirp.id }) %>
+  <div class="row">
+    <div class="col-2 col-lg-1 p-0">
+      <%= render "shared/sidebar" %>
+    </div>
+    <div class="col-10 col-lg-9 p-3">
 
-<%# TODO: render reply chirps %>
-<h2>Replies</h2>
-<% @chirp.replies.includes(:user).each do |chirp| %>
-  <div class="border">
-    <%= render chirp %>
+      <div class="d-flex align-items-center mb-3">
+        <%# Back to parent chirp if if exists %>
+        <% back_path =  if @chirp.parent_chirp.present?
+                          chirp_path(@chirp.parent_chirp)
+                        else
+                          chirps_path
+                        end
+        %>
+        <%= link_to back_path, class: "text-decoration-none text-body me-3" do %>
+          <i class="fa-solid fa-arrow-left fs-4"></i>
+        <% end %>
+        <h5 class="mb-0 fw-bold">Chirp</h5>
+      </div>
+
+      <div class="border-bottom pb-3">
+        <div class="d-flex">
+          <img src="https://picsum.photos/seed/<%= @chirp.user.email_address %>/64/64"
+              alt="avatar"
+              class="rounded-circle me-3 flex-shrink-0"
+              width="56" height="56">
+
+          <div class="flex-grow-1">
+            <div class="d-flex align-items-center">
+              <%= link_to "#{@chirp.user.display_name}", user_path(@chirp.user), class: "text-dark link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover me-2" %>
+              <strong class="text-muted">@<%= @chirp.user.username %></strong>
+            </div>
+
+            <p class="mt-2 mb-3 fs-5">
+              <%= simple_format(@chirp.body) %>
+            </p>
+
+            <p class="text-muted small mb-0">
+              <%= @chirp.created_at.strftime("%-I:%M %p · %b %-d, %Y") %>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <%# TODO: hook up action links %>
+      <div class="d-flex justify-content-between text-muted small mt-auto py-2 border-bottom">
+        <i class="fa-solid fa-comment me-3 fs-5"></i>
+        <i class="fa-solid fa-arrows-rotate me-3 fs-5"></i>
+        <i class="fa-solid fa-heart me-3 fs-5"></i>
+        <i class="fa-solid fa-arrow-up-from-bracket fs-5"></i>
+      </div>
+
+      <div class="my-2">
+        <%= render("form", chirp: Chirp.new(in_reply_to_chirp_id: @chirp.id)) %>
+      </div>
+
+      <%= render "list_group", chirps: @chirp.replies.includes(:user) %>
+
+    </div>
+    <div class="d-none d-lg-block col-lg-2 p-0">
+      <%# TODO: right sidebar%>
+    </div>
   </div>
-<% end %>
+</div>

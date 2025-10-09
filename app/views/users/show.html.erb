@@ -42,11 +42,7 @@
           </div>
         </div>
 
-        <div id="chirps" class="border p-3">
-          <% @user.chirps.where(in_reply_to_chirp_id: nil).each do |chirp| %>
-            <%= render("chirps/card", chirp: chirp) %>
-          <% end %>
-        </div>
+        <%= render "chirps/list_group", chirps: @user.chirps %>
       </div>
     </div>
     <div class="d-none d-lg-block col-lg-2 p-0">

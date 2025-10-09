@@ -25,4 +25,8 @@ class Chirp < ApplicationRecord
 
   belongs_to :parent_chirp, class_name: "Chirp", foreign_key: "in_reply_to_chirp_id", optional: true
   has_many :replies, class_name: "Chirp", foreign_key: "in_reply_to_chirp_id", dependent: :destroy
+
+  def title
+    "#{user.display_name} on Chirpy: \"#{body.truncate_words(10)}\""
+  end
 end
