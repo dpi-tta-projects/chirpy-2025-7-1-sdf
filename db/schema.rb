@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_10_02_193958) do
+ActiveRecord::Schema[8.0].define(version: 2025_10_09_193613) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -20,6 +20,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_02_193958) do
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "in_reply_to_chirp_id"
+    t.index ["in_reply_to_chirp_id"], name: "index_chirps_on_in_reply_to_chirp_id"
     t.index ["user_id"], name: "index_chirps_on_user_id"
   end
 
@@ -187,6 +189,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_02_193958) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "chirps", "chirps", column: "in_reply_to_chirp_id"
   add_foreign_key "chirps", "users"
   add_foreign_key "sessions", "users"
   add_foreign_key "solid_queue_blocked_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade

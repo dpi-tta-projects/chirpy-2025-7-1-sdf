@@ -20,6 +20,7 @@
 class User < ApplicationRecord
   has_secure_password
   has_many :sessions, dependent: :destroy
+  has_many :chirps
 
   normalizes :email_address, with: ->(email_address) { email_address.strip.downcase }
 

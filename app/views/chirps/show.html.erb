@@ -1,8 +1,12 @@
 <%= render @chirp %>
 
-<div>
-  <%= link_to "Edit this chirp", edit_chirp_path(@chirp) %> |
-  <%= link_to "Back to chirps", chirps_path %>
+<%# TODO: form (reply) %>
+<%= render "form", chirp: Chirp.new({ :in_reply_to_chirp_id => @chirp.id }) %>
 
-  <%= button_to "Destroy this chirp", @chirp, method: :delete %>
-</div>
+<%# TODO: render reply chirps %>
+<h2>Replies</h2>
+<% @chirp.replies.includes(:user).each do |chirp| %>
+  <div class="border">
+    <%= render chirp %>
+  </div>
+<% end %>

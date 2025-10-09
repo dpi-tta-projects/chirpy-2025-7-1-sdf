@@ -2,21 +2,27 @@
 #
 # Table name: chirps
 #
-#  id         :bigint           not null, primary key
-#  body       :text
-#  deleted_at :datetime
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  user_id    :bigint           not null
+#  id                   :bigint           not null, primary key
+#  body                 :text
+#  deleted_at           :datetime
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
+#  in_reply_to_chirp_id :bigint
+#  user_id              :bigint           not null
 #
 # Indexes
 #
-#  index_chirps_on_user_id  (user_id)
+#  index_chirps_on_in_reply_to_chirp_id  (in_reply_to_chirp_id)
+#  index_chirps_on_user_id               (user_id)
 #
 # Foreign Keys
 #
+#  fk_rails_...  (in_reply_to_chirp_id => chirps.id)
 #  fk_rails_...  (user_id => users.id)
 #
 class Chirp < ApplicationRecord
   belongs_to :user
+
+  belongs_to :parent_chirp, class_name: "Chirp", foreign_key: "in_reply_to_chirp_id", optional: true
+  has_many :replies, class_name: "Chirp", foreign_key: "in_reply_to_chirp_id", dependent: :destroy
 end

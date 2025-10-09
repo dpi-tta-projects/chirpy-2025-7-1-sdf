@@ -59,13 +59,12 @@ class ChirpsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_chirp
-      @chirp = Chirp.find(params.expect(:id))
-    end
 
-    # Only allow a list of trusted parameters through.
-    def chirp_params
-      params.expect(chirp: [ :body, :deleted_at ])
-    end
+  def set_chirp
+    @chirp = Chirp.find(params.expect(:id))
+  end
+
+  def chirp_params
+    params.expect(chirp: [ :body, :deleted_at, :in_reply_to_chirp_id ])
+  end
 end
