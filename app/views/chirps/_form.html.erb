@@ -13,9 +13,8 @@
 
   <% if chirp.parent_chirp.present? %>
     Replying to <%= link_to "@#{chirp.parent_chirp.user.username}", user_path(chirp.parent_chirp.user) %> 
+    <%= form.hidden_field :in_reply_to_chirp_id %>
   <% end %>
-
-  <%= form.hidden_field :in_reply_to_chirp_id %>
 
   <% placeholder_text = if chirp.in_reply_to_chirp_id.present?
                           "Post your reply"
