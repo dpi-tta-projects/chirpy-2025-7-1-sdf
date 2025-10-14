@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_10_09_193613) do
+ActiveRecord::Schema[8.0].define(version: 2025_10_14_195421) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -23,6 +23,16 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_09_193613) do
     t.bigint "in_reply_to_chirp_id"
     t.index ["in_reply_to_chirp_id"], name: "index_chirps_on_in_reply_to_chirp_id"
     t.index ["user_id"], name: "index_chirps_on_user_id"
+  end
+
+  create_table "follows", force: :cascade do |t|
+    t.bigint "follower_id", null: false
+    t.bigint "following_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["follower_id", "following_id"], name: "index_follows_on_follower_id_and_following_id", unique: true
+    t.index ["follower_id"], name: "index_follows_on_follower_id"
+    t.index ["following_id"], name: "index_follows_on_following_id"
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -191,6 +201,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_09_193613) do
 
   add_foreign_key "chirps", "chirps", column: "in_reply_to_chirp_id"
   add_foreign_key "chirps", "users"
+  add_foreign_key "follows", "users", column: "follower_id"
+  add_foreign_key "follows", "users", column: "following_id"
   add_foreign_key "sessions", "users"
   add_foreign_key "solid_queue_blocked_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_claimed_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade

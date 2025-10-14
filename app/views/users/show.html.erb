@@ -24,8 +24,14 @@
               <h3 class="text-secondary">@<%= @user.username %></h3>
             </div>
             
-
-            <%= link_to 'Edit Profile', edit_user_path(Current.user.id), class: "btn btn-outline-primary rounded-pill" %>
+            <% if Current.user == @user %>
+              <%= link_to 'Edit Profile', edit_user_path(Current.user.id), class: "btn btn-outline-primary rounded-pill" %>
+            <% elsif Current.user.is_following?(@user) %>
+              <% follow = Current.user.following.find_by(id: @user.id) %>
+              <%= button_to "Following", follow_path(follow), method: :delete, class: "btn btn-outline-secondary rounded-pill", data: { turbo_method: :delete } %>
+            <% else %>
+              <%= render "follows/form", follow: Follow.new(following: @user) %>
+            <% end %>
           </div>
           <p class="card-text">
             <%= @user.bio %>
