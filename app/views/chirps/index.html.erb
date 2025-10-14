@@ -12,11 +12,7 @@
         <%= render("form", chirp: Chirp.new) %>
       </div>
 
-      <div id="chirps" class="border p-3">
-        <% @chirps.each do |chirp| %>
-          <%= render("card", chirp: chirp) %>
-        <% end %>
-      </div>
+      <%= render "list_group", chirps: @chirps %>
     </div>
   </div>
 </div>

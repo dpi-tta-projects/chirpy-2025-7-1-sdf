@@ -12,8 +12,8 @@
       <div class="card">
         <div class="card-header">
           <h1><%= @user.display_name %></h1>
-          <%# TODO: add chirp count %>
-          <p>0 Chirps</p>
+          <%# TODO: add chirp count cache %>
+          <p><%= @user.chirps.where(in_reply_to_chirp_id: nil).count %> Chirps</p>
         </div>
         <img src="https://picsum.photos/seed/<%= @user.email_address %>/1200/400" class="img-fluid" alt="banner image">
 
@@ -41,6 +41,8 @@
             <a class="me-2 text-dark" href="/">0 Followers</a>
           </div>
         </div>
+
+        <%= render "chirps/list_group", chirps: @user.chirps %>
       </div>
     </div>
     <div class="d-none d-lg-block col-lg-2 p-0">
