@@ -1,5 +1,15 @@
 unless Rails.env.production?
   namespace :dev do
+    desc "Drops, creates, migrates, and adds sample data to database"
+    task reset: [
+      :environment,
+      "db:drop",
+      "db:seed",
+      "db:create",
+      "db:migrate",
+      "dev:sample_data"
+    ]
+
     desc "Add sample data"
     task sample_data: :environment do
 
@@ -40,6 +50,14 @@ unless Rails.env.production?
         chirp = Chirp.find_or_create_by(body: Faker::TvShows::Spongebob.quote) do |c|
           c.user = user
         end
+      end
+
+      puts "-- Adding follows --"
+
+      100.times do
+        ids = User.pluck(:id).sample(2)
+        follower_id, following_id = ids
+        Follow.find_or_create_by(follower_id: follower_id, following_id: following_id)
       end
 
       puts "-- Done --"
