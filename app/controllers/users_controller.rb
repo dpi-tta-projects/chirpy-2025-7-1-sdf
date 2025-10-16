@@ -49,6 +49,14 @@ class UsersController < ApplicationController
   # TODO
   def destroy; end
 
+  def following
+    @user = User.find_by(id: params[:id])
+  end
+
+  def followers
+    @user = User.find_by(id: params[:id])
+  end
+
   private
 
   def registration_params

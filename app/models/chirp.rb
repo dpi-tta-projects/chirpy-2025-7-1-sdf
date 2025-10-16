@@ -29,4 +29,14 @@ class Chirp < ApplicationRecord
   def title
     "#{user.display_name} on Chirpy: \"#{body.truncate_words(10)}\""
   end
+
+
+  def self.following_feed_for(user)
+    user_ids = user.following.pluck(:id)
+
+    Chirp
+      .where(user_id: user_ids + [ user.id ])
+      .where(deleted_at: nil)
+      .order(created_at: :desc)
+  end
 end

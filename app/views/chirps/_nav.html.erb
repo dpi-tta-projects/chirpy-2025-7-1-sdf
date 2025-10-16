@@ -1,0 +1,11 @@
+<nav class="nav nav-pills nav-fill m-2">
+  <%= link_to "For You",
+      chirps_path,
+      class: "nav-link #{current_page?(chirps_path) && 'active'}"
+  %>
+
+  <%= link_to "Following",
+      following_chirps_path,
+      class: "nav-link #{current_page?(following_chirps_path) && 'active'}"
+  %>
+</nav>

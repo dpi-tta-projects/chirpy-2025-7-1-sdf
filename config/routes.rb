@@ -1,12 +1,18 @@
 Rails.application.routes.draw do
   root "pages#landing"
 
-  # TODO
-  # get "follows/followers"
-  # get "follows/following"
   resources :follows
-  resources :chirps
+  resources :chirps do
+    collection do
+      get "following"
+    end
+  end
   resource :session
   resources :passwords, param: :token
-  resources :users
+  resources :users do
+    member do
+      get "following"
+      get "followers"
+    end
+  end
 end

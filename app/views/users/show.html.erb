@@ -43,8 +43,8 @@
             <span class="me-2"><i class="fa-solid fa-calendar-days"></i> Joined <%= @user.created_at.strftime("%B %Y") %></span>
           </p>
           <div class="d-flex">
-            <a class="me-2 text-dark" href="/">0 Following</a>
-            <a class="me-2 text-dark" href="/">0 Followers</a>
+            <%= link_to "#{@user.following.count} Following", following_user_path(@user), class: "me-2 text-dark" %>
+            <%= link_to "#{@user.followers.count} Followers", followers_user_path(@user), class: "me-2 text-dark" %>
           </div>
         </div>
 

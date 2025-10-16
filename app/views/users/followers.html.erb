@@ -1,0 +1,15 @@
+<div class="container-fluid">
+  <% content_for :title, "People following #{@user.display_name} (@#{@user.username}) / Chirpy" %>
+  <div class="row">
+    <div class="col-2 col-lg-1 p-0">
+      <%= render "shared/sidebar" %>
+    </div>
+    <div class="col-10 col-lg-9 p-0">
+      <%= render "follow_nav" %>
+      <%= render "list_group", users: @user.followers %>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 p-0">
+      <%# TODO: right sidebar%>
+    </div>
+  </div>
+</div>
