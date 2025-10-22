@@ -1,0 +1,4 @@
+<%= form_with model: follow do |form| %>
+  <%= form.hidden_field :following_id %>
+  <%= form.submit "Follow", class: "btn btn-primary rounded-pill" %>
+<% end %>

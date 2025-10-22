@@ -6,6 +6,12 @@ class ChirpsController < ApplicationController
     @chirps = Chirp.all.includes(:user)
   end
 
+  def following
+    @chirps = Chirp.following_feed_for(Current.user).includes(:user)
+
+    render :index
+  end
+
   # GET /chirps/1 or /chirps/1.json
   def show
   end
