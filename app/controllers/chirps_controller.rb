@@ -3,11 +3,11 @@ class ChirpsController < ApplicationController
 
   # GET /chirps or /chirps.json
   def index
-    @chirps = Chirp.all.includes(:user)
+    @chirps = Chirp.all.includes(:user, :parent_chirp)
   end
 
   def following
-    @chirps = Chirp.following_feed_for(Current.user).includes(:user)
+    @chirps = Chirp.following_feed_for(Current.user).includes(:user, :parent_chirp)
 
     render :index
   end

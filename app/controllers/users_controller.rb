@@ -23,6 +23,20 @@ class UsersController < ApplicationController
   # user GET    /users/:id(.:format)  users#show
   def show
     @user = User.where({ :id => params.fetch(:id) }).at(0)
+    @chirps = @user.chirps.originals
+    render :show
+  end
+
+  def replies
+    @user = User.find_by(id: params[:id])
+    @chirps = @user.chirps.replies.includes(parent_chirp: :user)
+    render :show
+  end
+
+  def likes
+    @user = User.find_by(id: params[:id])
+    # TODO: implement likes
+    @chirps = []
     render :show
   end
 
