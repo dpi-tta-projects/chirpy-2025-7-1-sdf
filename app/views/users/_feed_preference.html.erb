@@ -1,0 +1,11 @@
+<nav class="nav nav-underline nav-fill m-2">
+  <%= form_with model: Current.user, url: feed_preference_user_path(Current.user), method: :patch, class: "nav-item" do |form| %>
+    <%= form.hidden_field :feed_preference, value: "for_you" %>
+    <%= form.submit "For You", class: "nav-link #{Current.user.for_you_feed_preference? && 'active'}" %>
+  <% end %>
+
+  <%= form_with model: Current.user, url: feed_preference_user_path(Current.user), method: :patch, class: "nav-item" do |form| %>
+    <%= form.hidden_field :feed_preference, value: "following" %>
+    <%= form.submit "Following", class: "nav-link #{Current.user.following_feed_preference? && 'active'}" %>
+  <% end %>
+</nav>
