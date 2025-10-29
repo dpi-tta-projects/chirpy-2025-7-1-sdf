@@ -6,6 +6,7 @@
 #  bio             :text
 #  display_name    :string
 #  email_address   :string           not null
+#  feed_preference :string           default("for_you"), not null
 #  location        :string
 #  password_digest :string           not null
 #  username        :string
@@ -30,6 +31,8 @@ class User < ApplicationRecord
 
   validates :username, presence: true, uniqueness: true
   validates :display_name, presence: true
+
+  enum :feed_preference, { for_you: "for_you", following: "following" }, suffix: true, default: "for_you"
 
   def is_following?(user)
     following.find_by(id: user.id).present?
