@@ -5,6 +5,7 @@
 #  id                   :bigint           not null, primary key
 #  body                 :text
 #  deleted_at           :datetime
+#  likes_count          :integer
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
 #  in_reply_to_chirp_id :bigint
@@ -25,6 +26,7 @@ class Chirp < ApplicationRecord
 
   belongs_to :parent_chirp, class_name: "Chirp", foreign_key: "in_reply_to_chirp_id", optional: true
   has_many :replies, class_name: "Chirp", foreign_key: "in_reply_to_chirp_id", dependent: :destroy
+  has_many :likes, dependent: :destroy
 
   scope :originals, -> { where(in_reply_to_chirp_id: nil) }
   scope :replies, -> { where.not(in_reply_to_chirp_id: nil) }
