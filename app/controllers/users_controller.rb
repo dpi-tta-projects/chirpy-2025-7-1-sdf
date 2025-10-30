@@ -51,6 +51,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def feed_preference
+    @user = User.find_by(id: params[:id])
+    if @user.update(feed_preference_params)
+      redirect_to(chirps_path, notice: "Updated feed preference")
+    else
+      render :edit, alert: "Something went wrong when saving"
+    end
+  end
+
   def update
     @user = User.where({ :id => params.fetch(:id) }).at(0)
     if @user.update(profile_params)
@@ -79,5 +88,9 @@ class UsersController < ApplicationController
 
   def profile_params
     params.expect(user: [ :username, :bio, :display_name, :location ])
+  end
+
+  def feed_preference_params
+    params.expect(user: [ :feed_preference ])
   end
 end

@@ -2,11 +2,7 @@ Rails.application.routes.draw do
   root "pages#landing"
 
   resources :follows
-  resources :chirps do
-    collection do
-      get "following"
-    end
-  end
+  resources :chirps
   resource :session
   resources :passwords, param: :token
   resources :users do
@@ -15,6 +11,7 @@ Rails.application.routes.draw do
       get "followers"
       get "replies"
       get "likes"
+      patch "feed_preference"
     end
   end
 end
