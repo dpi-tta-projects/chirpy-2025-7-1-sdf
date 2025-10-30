@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root "pages#landing"
 
   resources :follows
+  resources :likes, only: [ :create, :destroy ]
   resources :chirps
   resource :session
   resources :passwords, param: :token

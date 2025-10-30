@@ -1,0 +1,8 @@
+<%= form_with model: like, method: :delete do |form| %>
+  <div class="d-flex align-items-center">
+    <%= form.button class: "btn btn-link p-0" do %>
+      <i class="fa-solid fa-heart text-danger"></i>
+    <% end %>
+    <%= like.chirp.likes_count if like.chirp.likes_count.positive? %>
+  </div>
+<% end %>
