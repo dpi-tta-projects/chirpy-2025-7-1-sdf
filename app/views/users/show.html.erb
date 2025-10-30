@@ -48,7 +48,9 @@
           </div>
         </div>
 
-        <%= render "chirps/list_group", chirps: @user.chirps %>
+
+        <%= render "users/profile_nav", user: @user %>
+        <%= render "chirps/list_group", chirps: @chirps %>
       </div>
     </div>
     <div class="d-none d-lg-block col-lg-2 p-0">

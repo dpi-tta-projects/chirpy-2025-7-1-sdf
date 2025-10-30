@@ -1,0 +1,16 @@
+<nav class="nav nav-underline nav-fill m-2">
+  <%= link_to "Chirps",
+      user_path(user),
+      class: "nav-link #{current_page?(user_path(user)) && 'active'}"
+  %>
+
+  <%= link_to "Replies",
+      replies_user_path(user),
+      class: "nav-link #{current_page?(replies_user_path(user)) && 'active'}"
+  %>
+
+  <%= link_to "Likes",
+      likes_user_path(user),
+      class: "nav-link #{current_page?(likes_user_path(user)) && 'active'}"
+  %>
+</nav>
