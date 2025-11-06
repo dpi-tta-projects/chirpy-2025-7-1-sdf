@@ -1,5 +1,5 @@
 
-<%= form_with model: like do |form| %>
+<%= form_with model: like, local: false, id: dom_id(like, dom_id(like.chirp)) do |form| %>
   <%= form.hidden_field :chirp_id %>
   <div class="d-flex align-items-center">
     <%= form.button class: "btn btn-link p-0" do %>

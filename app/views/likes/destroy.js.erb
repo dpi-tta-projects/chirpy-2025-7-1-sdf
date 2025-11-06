@@ -1,0 +1,10 @@
+// find destroy form
+let existingForm = $("#<%= dom_id(@like) %>")
+
+// render new like form]
+let newForm = "<%= j(render('likes/like', chirp: @like.chirp)) %>"
+
+// replace existing destroy form with new form
+existingForm.replaceWith(newForm)
+
+$("#<%= dom_id(Like, dom_id(@like.chirp)) %>").addClass("bounce-animation")
