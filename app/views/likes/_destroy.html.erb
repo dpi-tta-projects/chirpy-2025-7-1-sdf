@@ -1,6 +1,6 @@
 <%= form_with model: like, method: :delete, local: false, id: dom_id(like, dom_id(like.chirp)) do |form| %>
   <div class="d-flex align-items-center">
-    <%= form.button class: "btn btn-link p-0" do %>
+    <%= form.button class: "btn btn-link p-0", title: "Unlike", aria: { label: "#{like.chirp.likes_count} Likes. Liked" } do %>
       <i class="fa-solid fa-heart text-danger"></i>
     <% end %>
     <%= like.chirp.likes_count if like.chirp.likes_count.positive? %>
