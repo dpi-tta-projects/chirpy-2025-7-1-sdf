@@ -1,0 +1,6 @@
+<% like = chirp.likes.find_by(user: Current.user) %>
+<% if like %>
+  <%= render "likes/destroy", like: like %>
+<% else %>
+  <%= render "likes/form", like: chirp.likes.new %>
+<% end %>

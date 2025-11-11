@@ -1,0 +1,20 @@
+// Wrap in function
+// Each time your .js.erb runs (e.g., after liking or unliking), it gets a fresh scope.
+// Can use `let` or `const` safely.
+// No global variables pollute the window scope.
+// No "already declared" errors when the same script runs again.
+
+function create() {
+  // find likes form
+  var form = $("#<%= dom_id(Like, dom_id(@like.chirp)) %>")
+
+  // render destroy form
+  var destroyForm = "<%= j(render('likes/like', chirp: @like.chirp)) %>"
+
+  // replace existing form with destroy form
+  form.replaceWith(destroyForm)
+
+  $("#<%= dom_id(@like, dom_id(@like.chirp)) %>").addClass("bounce-animation")
+}
+
+create();

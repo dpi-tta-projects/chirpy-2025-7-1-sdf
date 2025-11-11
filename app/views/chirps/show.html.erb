@@ -46,11 +46,11 @@
       </div>
 
       <%# TODO: hook up action links %>
-      <div class="d-flex justify-content-between text-muted small mt-auto py-2 border-bottom">
-        <i class="fa-solid fa-comment me-3 fs-5"></i>
-        <i class="fa-solid fa-arrows-rotate me-3 fs-5"></i>
-        <i class="fa-solid fa-heart me-3 fs-5"></i>
-        <i class="fa-solid fa-arrow-up-from-bracket fs-5"></i>
+      <div class="d-flex align-items-center justify-content-between text-muted small mt-auto py-2 border-bottom">
+        <i class="fa-solid fa-comment me-3"></i>
+        <i class="fa-solid fa-arrows-rotate me-3"></i>
+        <%= render "likes/like", chirp: @chirp %>
+        <i class="fa-solid fa-arrow-up-from-bracket"></i>
       </div>
 
       <div class="my-2">
