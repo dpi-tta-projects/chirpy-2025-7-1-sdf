@@ -9,8 +9,10 @@
       class: "nav-link #{current_page?(replies_user_path(user)) && 'active'}"
   %>
 
-  <%= link_to "Likes",
-      likes_user_path(user),
-      class: "nav-link #{current_page?(likes_user_path(user)) && 'active'}"
-  %>
+  <% if policy(user).likes? %>
+    <%= link_to "Likes",
+        likes_user_path(user),
+        class: "nav-link #{current_page?(likes_user_path(user)) && 'active'}"
+    %>
+  <% end %>
 </nav>
