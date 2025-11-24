@@ -22,6 +22,8 @@ class User < ApplicationRecord
   has_secure_password
   has_many :sessions, dependent: :destroy
   has_many :chirps
+  has_many :likes
+  has_many :liked_chirps, through: :likes, source: :chirp
   has_many :follows_as_follower, class_name: "Follow", foreign_key: :follower_id
   has_many :follows_as_following, class_name: "Follow", foreign_key: :following_id
   has_many :following, through: :follows_as_follower, source: :following

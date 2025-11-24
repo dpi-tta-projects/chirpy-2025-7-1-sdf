@@ -35,8 +35,11 @@ class UsersController < ApplicationController
 
   def likes
     @user = User.find_by(id: params[:id])
-    # TODO: implement likes
-    @chirps = []
+
+    # raise Pundit::NotAuthorizedError unless UserPolicy.new(Current.user, @user).likes?
+    authorize @user
+
+    @chirps = @user.liked_chirps.includes([ :user, :parent_chirp ])
     render :show
   end
 
