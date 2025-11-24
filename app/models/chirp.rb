@@ -31,6 +31,8 @@ class Chirp < ApplicationRecord
   scope :originals, -> { where(in_reply_to_chirp_id: nil) }
   scope :replies, -> { where.not(in_reply_to_chirp_id: nil) }
 
+  validates :body, length: { maximum: 280 }, presence: true
+
   def title
     "#{user.display_name} on Chirpy: \"#{body.truncate_words(10)}\""
   end
