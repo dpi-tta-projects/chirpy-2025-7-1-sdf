@@ -21,7 +21,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_30_202857) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "in_reply_to_chirp_id"
-    t.integer "likes_count"
+    t.integer "likes_count", default: 0
     t.index ["in_reply_to_chirp_id"], name: "index_chirps_on_in_reply_to_chirp_id"
     t.index ["user_id"], name: "index_chirps_on_user_id"
   end
