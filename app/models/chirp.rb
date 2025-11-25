@@ -5,7 +5,7 @@
 #  id                   :bigint           not null, primary key
 #  body                 :text
 #  deleted_at           :datetime
-#  likes_count          :integer
+#  likes_count          :integer          default(0)
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
 #  in_reply_to_chirp_id :bigint
