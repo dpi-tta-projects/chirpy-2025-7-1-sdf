@@ -1,0 +1,10 @@
+
+<%= turbo_stream.append "chirps" do %>
+  <% @chirps.each do |chirp| %>
+    <%= render("chirps/list_group_item", chirp: chirp) %>
+  <% end %>
+<% end %>
+
+<%= turbo_stream.replace "infinite-scroll" do %>
+  <%= render "infinite_scroll", chirps: @chirps %>
+<% end %>

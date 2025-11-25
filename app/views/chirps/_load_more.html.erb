@@ -1,0 +1,7 @@
+<div id="load-more" class="d-flex justify-content-center">
+  <% if chirps.next_page %>
+    <%= link_to "Load more", chirps_path(page: chirps.next_page, format: :turbo_stream), class: "btn btn-outline-primary" %>
+  <% else %>
+    <span>No more chirps</span>
+  <% end %>
+</div>
