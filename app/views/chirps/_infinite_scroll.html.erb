@@ -1,0 +1,7 @@
+<% if chirps.next_page %>
+  <div id="infinite-scroll"
+      class="d-flex justify-content-center my-5"
+      data-controller="infinite-scroll"
+      data-infinite-scroll-next-value="<%= chirps_path(page: chirps.next_page, format: :turbo_stream) if chirps.next_page %>">
+  </div>
+<% end %>

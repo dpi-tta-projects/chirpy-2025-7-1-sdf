@@ -5,9 +5,14 @@ class ChirpsController < ApplicationController
   def index
     @chirps = if Current.user.for_you_feed_preference?
       # TODO: implement "for you" feed
-      Chirp.all.includes(:user, :parent_chirp)
+      Chirp.all.includes(:user, :parent_chirp).page(params[:page])
     else
-      Chirp.following_feed_for(Current.user).includes(:user, :parent_chirp)
+      Chirp.following_feed_for(Current.user).includes(:user, :parent_chirp).page(params[:page])
+    end
+
+    respond_to do |format|
+      format.html
+      format.turbo_stream
     end
   end
 
