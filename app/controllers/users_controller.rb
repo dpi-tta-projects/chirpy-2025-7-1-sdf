@@ -83,6 +83,10 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
   end
 
+  def about
+    @user = User.find_by(id: params[:id])
+  end
+
   private
 
   def registration_params

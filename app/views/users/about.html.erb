@@ -1,0 +1,58 @@
+<div class="container-fluid">
+  <% content_for :title, "About this account / Chirpy" %>
+  <div class="row">
+    <div class="col-2 col-lg-1 p-0">
+      <%= render "shared/sidebar" %>
+    </div>
+    <div class="col-10 col-lg-9 p-0">
+      <!-- Nav -->
+      <nav>
+        <div class="d-flex align-items-center my-2">
+          <%= link_to user_path, class: "text-decoration-none text-body mx-3" do %>
+            <i class="fa-solid fa-arrow-left fs-4"></i>
+          <% end %>
+          <div>
+            <h5 class="mb-0 fw-bold"><%= @user.display_name %></h5>
+            <p><%= @user.username %></p>
+          </div>
+        </div>
+      </nav>
+      
+      <div class="d-flex justify-content-center">
+        <div>
+          <!-- Avatar -->
+          <!-- Name -->
+          <!-- @username -->
+        </div>
+      </div>
+
+      <!-- Date Joined -->
+      <div class="d-flex align-items-center p-3">
+        <div class="p-3">
+          <i class="fa-solid fa-calendar-days"></i>
+        </div>
+        <div>
+          <div><strong>Date Joined</strong></div>
+          <div><%= @user.created_at.strftime("%B %Y") %></div>
+        </div>
+      </div>
+
+      <!-- Account Based In -->
+      <% if @user.latest_session&.ip_stack&.has_key?("country_name") %>
+        <div class="d-flex align-items-center p-3">
+          <div class="p-3">
+            <i class="fa-solid fa-location-dot"></i>
+          </div>
+          <div>
+            <div><strong>Account Based In</strong></div>
+              <div><%= @user.latest_session.ip_stack["country_name"] %></div>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+    <div class="d-none d-lg-block col-lg-2 p-0">
+      <%# TODO: right sidebar%>
+    </div>
+  </div>
+</div>
