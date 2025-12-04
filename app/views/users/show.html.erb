@@ -40,7 +40,9 @@
             <% if @user.location.present? %>
               <span class="me-2"><i class="fa-solid fa-map-pin"></i> <%= @user.location %></span>
             <% end %>
-            <span class="me-2"><i class="fa-solid fa-calendar-days"></i> Joined <%= @user.created_at.strftime("%B %Y") %></span>
+            <%= link_to about_user_path, class: "me-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover link-dark" do %>
+              <i class="fa-solid fa-calendar-days"></i> Joined <%= @user.created_at.strftime("%B %Y") %><i class="fa-solid fa-angle-right"></i>
+            <% end %>
           </p>
           <div class="d-flex">
             <%= link_to "#{@user.following.count} Following", following_user_path(@user), class: "me-2 text-dark" %>

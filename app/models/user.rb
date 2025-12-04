@@ -21,6 +21,7 @@
 class User < ApplicationRecord
   has_secure_password
   has_many :sessions, dependent: :destroy
+  has_one :latest_session, -> { order(created_at: :desc) }, class_name: "Session"
   has_many :chirps
   has_many :likes
   has_many :liked_chirps, through: :likes, source: :chirp
