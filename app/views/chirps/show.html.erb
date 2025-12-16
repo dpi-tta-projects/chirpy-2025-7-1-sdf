@@ -23,10 +23,7 @@
 
       <div class="border-bottom pb-3">
         <div class="d-flex">
-          <img src="https://picsum.photos/seed/<%= @chirp.user.email_address %>/64/64"
-              alt="avatar"
-              class="rounded-circle me-3 flex-shrink-0"
-              width="56" height="56">
+           <%= image_tag(@chirp.user.avatar_with_fallback(56, 56), class: "rounded-circle me-3 flex-shrink-0", width: 56, height: 56) %>
 
           <div class="flex-grow-1">
             <div class="d-flex align-items-center">
