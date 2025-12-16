@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :passwords, param: :token
   resources :users do
     member do
+      get "about"
       get "following"
       get "followers"
       get "replies"
