@@ -79,6 +79,8 @@ gem "simple_form"
 gem "strip_attributes"
 gem "validate_url"
 
+gem "aws-sdk-s3", require: false
+
 group :development do
   gem "annotaterb"
   gem "better_errors"

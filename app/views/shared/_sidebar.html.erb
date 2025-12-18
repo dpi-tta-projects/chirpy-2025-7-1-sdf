@@ -20,7 +20,7 @@
 
     <div class="dropdown border-top">
       <a href="#" class="d-flex align-items-center justify-content-center p-3 link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-        <img src="https://picsum.photos/seed/<%= Current.user.email_address %>/600/400" alt="avatar" width="24" height="24" class="rounded-circle">
+        <%= image_tag(Current.user.avatar_with_fallback(24, 24), class: "rounded-circle", width: 24, height: 24) %>
       </a> 
     
       <ul class="dropdown-menu text-small shadow"> 

@@ -29,6 +29,15 @@ class User < ApplicationRecord
   has_many :following, through: :follows_as_follower, source: :following
   has_many :followers, through: :follows_as_following, source: :follower
 
+  # TODO: move to avatarable concern
+  has_one_attached :avatar
+
+  def avatar_with_fallback(width = 250, height = 250)
+    return "https://picsum.photos/seed/#{email_address}/#{width}/#{height}" unless avatar.attached?
+
+    avatar
+  end
+
   normalizes :email_address, with: ->(email_address) { email_address.strip.downcase }
 
   validates :username, presence: true, uniqueness: true

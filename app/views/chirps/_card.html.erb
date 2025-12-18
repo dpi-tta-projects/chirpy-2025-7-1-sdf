@@ -1,7 +1,7 @@
 <div id="<%= dom_id chirp %>" class="card mb-3">
   <div class="row g-0">
     <div class="col-md-4">
-      <img src="https://picsum.photos/seed/<%= chirp.user.email_address %>/600/400" class="img-fluid rounded-start" alt="avatar image">
+      <%= image_tag(user.avatar_with_fallback, class: "img-fluid rounded-start") %>
     </div>
     <div class="col-md-8">
       <div class="card-body">

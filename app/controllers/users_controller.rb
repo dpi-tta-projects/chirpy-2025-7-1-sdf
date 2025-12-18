@@ -90,7 +90,7 @@ class UsersController < ApplicationController
   end
 
   def profile_params
-    params.expect(user: [ :username, :bio, :display_name, :location ])
+    params.expect(user: [ :avatar, :username, :bio, :display_name, :location ])
   end
 
   def feed_preference_params
