@@ -1,9 +1,19 @@
-<h1>Update your password</h1>
+<div class="container my-5">
 
-<%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
+  <h1>Update your password</h1>
 
-<%= form_with url: password_path(params[:token]), method: :put do |form| %>
-  <%= form.password_field :password, required: true, autocomplete: "new-password", placeholder: "Enter new password", maxlength: 72 %><br>
-  <%= form.password_field :password_confirmation, required: true, autocomplete: "new-password", placeholder: "Repeat new password", maxlength: 72 %><br>
-  <%= form.submit "Save" %>
-<% end %>
+  <%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
+
+  <%= form_with url: password_path(params[:token]), method: :put do |form| %>
+
+    <div class="mb-3">
+      <%= form.password_field :password, required: true, class: "form-control", autocomplete: "new-password", placeholder: "Enter new password", maxlength: 72 %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.password_field :password_confirmation, required: true, class: "form-control", autocomplete: "new-password", placeholder: "Repeat new password", maxlength: 72 %>
+    </div>
+
+    <%= form.submit "Save", class: "btn btn-primary rounded-pill w-100" %>
+  <% end %>
+</div>
