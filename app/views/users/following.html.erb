@@ -7,7 +7,7 @@
     </div>
     <div class="col-10 col-lg-9 p-0">
       <%= render "follow_nav" %>
-      <%= render "list_group", users: @user.following %>
+      <%= render "list_group", users: @user.following.includes(:avatar_attachment) %>
     </div>
     <div class="d-none d-lg-block col-lg-2 p-0">
       <%# TODO: right sidebar%>

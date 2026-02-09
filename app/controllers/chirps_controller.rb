@@ -3,12 +3,15 @@ class ChirpsController < ApplicationController
 
   # GET /chirps or /chirps.json
   def index
-    @chirps = if Current.user.for_you_feed_preference?
-      # TODO: implement "for you" feed
-      Chirp.all.includes(:user, :parent_chirp).page(params[:page])
+    scope = if Current.user.for_you_feed_preference?
+      Chirp.all # TODO: implement "for you" feed
     else
-      Chirp.following_feed_for(Current.user).includes(:user, :parent_chirp).page(params[:page])
+      Chirp.following_feed_for(Current.user)
     end
+
+    @chirps = scope.default_order
+                   .includes(user: :avatar_attachment, parent_chirp: { user: :avatar_attachment })
+                   .page(params[:page])
 
     respond_to do |format|
       format.html

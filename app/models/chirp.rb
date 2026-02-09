@@ -30,6 +30,7 @@ class Chirp < ApplicationRecord
 
   scope :originals, -> { where(in_reply_to_chirp_id: nil) }
   scope :replies, -> { where.not(in_reply_to_chirp_id: nil) }
+  scope :default_order, -> { order(created_at: :desc) }
 
   validates :body, length: { maximum: 280 }, presence: true
 
