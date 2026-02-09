@@ -15,4 +15,7 @@ Rails.application.routes.draw do
       patch "feed_preference"
     end
   end
+
+  # TODO: restrict to admins
+  mount MissionControl::Jobs::Engine, at: "/jobs"
 end
