@@ -12,7 +12,9 @@
       <div class="border p-3">
         <%= render("form", chirp: Chirp.new) %>
       </div>
-
+      <% if @title.present? %>
+        <h2 class="display-5 m-3"><%= @title %></h2>
+      <% end %>
       <%= render "list_group", chirps: @chirps %>
       <%= render "infinite_scroll", chirps: @chirps %>
     </div>

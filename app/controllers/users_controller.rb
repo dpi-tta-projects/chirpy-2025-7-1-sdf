@@ -83,6 +83,11 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
   end
 
+  def digest
+    # TODO: move to background job and store in user column. update once a day
+    @digest = DigestService.new(chirps: Chirp.following_feed_for(Current.user).limit(50)).call
+  end
+
   private
 
   def registration_params
