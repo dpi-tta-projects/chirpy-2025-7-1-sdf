@@ -1,4 +1,5 @@
-<%= form_with url: session_path do |form| %>
+<%# NOTE: Disabling turbo so redirect chain executes properly %>
+<%= form_with url: session_path, data: { turbo: false } do |form| %>
   <div class="mb-3">
     <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address], class: "form-control" %>
   </div>
