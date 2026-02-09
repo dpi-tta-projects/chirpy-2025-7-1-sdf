@@ -39,7 +39,7 @@ class UsersController < ApplicationController
     # raise Pundit::NotAuthorizedError unless UserPolicy.new(Current.user, @user).likes?
     authorize @user
 
-    @chirps = @user.liked_chirps.includes([ :user, :parent_chirp ])
+    @chirps = @user.liked_chirps.includes(user: :avatar_attachment)
     render :show
   end
 
