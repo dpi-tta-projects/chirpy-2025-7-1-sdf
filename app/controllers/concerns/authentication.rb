@@ -34,6 +34,7 @@ module Authentication
       redirect_to new_session_path
     end
 
+    # TODO: fix login redirect bug
     def after_authentication_url
       session.delete(:return_to_after_authenticating) || root_url
     end
