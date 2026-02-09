@@ -4,6 +4,7 @@
 #
 #  id              :bigint           not null, primary key
 #  bio             :text
+#  digest          :json
 #  display_name    :string
 #  email_address   :string           not null
 #  feed_preference :string           default("for_you"), not null
@@ -47,5 +48,17 @@ class User < ApplicationRecord
 
   def is_following?(user)
     following.find_by(id: user.id).present?
+  end
+
+  # TODO: move to concern 'digestable'
+  def self.refresh_digest
+    # TODO: do in batches
+    User.all.each(&:refresh_digest)
+  end
+
+  def refresh_digest
+    chirps = Chirp.following_feed_for(self).limit(50)
+    digest = DigestService.new(chirps:).call
+    update(digest:)
   end
 end

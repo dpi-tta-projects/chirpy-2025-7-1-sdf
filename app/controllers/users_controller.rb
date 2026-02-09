@@ -84,8 +84,10 @@ class UsersController < ApplicationController
   end
 
   def digest
-    # TODO: move to background job and store in user column. update once a day
-    @digest = DigestService.new(chirps: Chirp.following_feed_for(Current.user).limit(50)).call
+    # @digest = DigestService.new(chirps: Chirp.following_feed_for(Current.user).limit(50)).call
+    @digest = Current.user.digest
+
+    redirect_back(fallback_location: root_path, alert: "Digest not found") unless @digest.present?
   end
 
   private

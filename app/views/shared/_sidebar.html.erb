@@ -16,11 +16,13 @@
           <i class="fa-solid fa-user"></i>
         </a>
       </li>
-      <li>
-        <a href="/users/<%= Current.user.id %>/digest" class="nav-link py-3 border-bottom rounded-0" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Digest" data-bs-original-title="Digest">
-          <i class="fa-solid fa-bolt"></i>
-        </a>
-      </li>
+      <% if Current.user.digest.present? %>
+        <li>
+          <a href="/users/<%= Current.user.id %>/digest" class="nav-link py-3 border-bottom rounded-0" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Digest" data-bs-original-title="Digest">
+            <i class="fa-solid fa-bolt"></i>
+          </a>
+        </li>
+      <% end %>
     </ul>
 
     <div class="dropdown border-top">
