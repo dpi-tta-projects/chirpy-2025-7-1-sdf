@@ -83,6 +83,12 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
   end
 
+  def digest
+    @digest = Current.user.digest
+
+    redirect_back(fallback_location: root_path, alert: "Digest not found") unless @digest.present?
+  end
+
   private
 
   def registration_params

@@ -11,5 +11,10 @@
 
 favorite_user:
   class: FavoriteUserJob
-  schedule: "* * * * *"
+  schedule: every hour
+  queue: default
+
+refresh_user_digests:
+  class: RefreshUserDigestsJob
+  schedule: every day
   queue: default

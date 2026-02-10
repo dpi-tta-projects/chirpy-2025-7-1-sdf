@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_12_16_204151) do
+ActiveRecord::Schema[8.0].define(version: 2026_02_09_212725) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -235,6 +235,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_12_16_204151) do
     t.string "location"
     t.text "bio"
     t.string "feed_preference", default: "for_you", null: false
+    t.json "digest"
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end

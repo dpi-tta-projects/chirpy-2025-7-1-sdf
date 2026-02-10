@@ -3,7 +3,11 @@ class ChirpsController < ApplicationController
 
   # GET /chirps or /chirps.json
   def index
-    scope = if Current.user.for_you_feed_preference?
+    @title = params[:title] if params[:title].present?
+
+    scope = if params[:chirp_ids].present?
+      Chirp.where(id: params[:chirp_ids])
+    elsif Current.user.for_you_feed_preference?
       Chirp.all # TODO: implement "for you" feed
     else
       Chirp.following_feed_for(Current.user)

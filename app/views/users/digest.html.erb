@@ -1,0 +1,31 @@
+<div class="container-fluid">
+  <% content_for :title, "Chirpy | Digest" %>
+  <div class="row">
+    <div class="col-2 col-lg-1 p-0">
+      <%= render "shared/sidebar" %>
+    </div>
+    <div class="col-10 col-lg-11 px-5">
+      <h1>DigestAi</h1>
+      <section id="themes">
+        <h2>Themes</h2>
+          <ul>
+            <% @digest["themes"].each do |theme| %>
+              <li>
+                <%= link_to theme["title"], chirps_path(chirp_ids: theme["chirp_ids"], title: theme["title"]) %>
+              </li>
+            <% end %>
+          <ul>
+      </section>
+      <section id="dont-miss">
+        <h2>Don't Miss</h2>
+          <ul>
+            <% @digest["dont_miss"].each do |dont_miss| %>
+              <li>
+                <%= link_to dont_miss["reason"], chirp_path(dont_miss["chirp_id"]) %>
+              </li>
+            <% end %>
+          <ul>
+      </section>
+    </div>
+  </div>
+</div>

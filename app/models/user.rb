@@ -4,6 +4,7 @@
 #
 #  id              :bigint           not null, primary key
 #  bio             :text
+#  digest          :json
 #  display_name    :string
 #  email_address   :string           not null
 #  feed_preference :string           default("for_you"), not null
@@ -19,6 +20,8 @@
 #  index_users_on_username       (username) UNIQUE
 #
 class User < ApplicationRecord
+  include Digestable
+
   has_secure_password
   has_many :sessions, dependent: :destroy
   has_many :chirps

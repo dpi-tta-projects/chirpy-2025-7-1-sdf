@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       get "followers"
       get "replies"
       get "likes"
+      get "digest"
       patch "feed_preference"
     end
   end
