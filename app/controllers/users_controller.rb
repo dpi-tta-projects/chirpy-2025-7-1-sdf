@@ -84,7 +84,6 @@ class UsersController < ApplicationController
   end
 
   def digest
-    # @digest = DigestService.new(chirps: Chirp.following_feed_for(Current.user).limit(50)).call
     @digest = Current.user.digest
 
     redirect_back(fallback_location: root_path, alert: "Digest not found") unless @digest.present?

@@ -8,7 +8,6 @@ class DigestService
       - Use ONLY chirp IDs from the provided list
       - Max 3 themes
       - Max 5 dont_miss items
-      - Max 3 suggested replies
       - Return ONLY plain, valid JSON (no markdown) with this structure:
 
     {
